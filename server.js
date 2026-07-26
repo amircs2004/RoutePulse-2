@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const bddConnectionTest = require('../controllers/bddtest')
+const bddConnectionTest = require('./controllers/bddtest')
 
 const  auth = require('../routes/auth.route')
 const  test = require('../routes/bdd.route')
