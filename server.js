@@ -1,8 +1,13 @@
 require("dotenv").config();
-const express = require("express");
+const express = require('express');
+const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
+
+
+
+const bddConnectionTest = require('./controllers/bddtest')
 app.use(
   cors({
     //i need to make sure that my server accepts the the froennd requests 
@@ -16,3 +21,6 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
+app.use('/api' , bddConnectionTest)
+
+module.exports = app
