@@ -3,11 +3,15 @@ const express = require('express');
 const app = express();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
-
-
-
-
 const bddConnectionTest = require('./controllers/bddtest')
+
+const  auth = require('./routes/auth.route')
+const  test = require('./routes/bdd.route')
+
+console.log("CHECKING AUTH ROUTER:", auth); // <-- Add this log
+console.log("CHECKING TEST ROUTER:", test); // <-- Add this log
+
+
 app.use(
   cors({
     //i need to make sure that my server accepts the the froennd requests 
@@ -21,6 +25,10 @@ app.use(
 );
 app.use(cookieParser());
 app.use(express.json());
-app.use('/api' , bddConnectionTest)
+//app.use('/api' , bddConnectionTest)
+app.use('/api' , test)
+
+app.use('/api' , auth)
+
 
 module.exports = app
